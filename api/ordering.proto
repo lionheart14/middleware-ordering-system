@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package ordering;
+
+// Der Service, den der Middleware-Server bereitstellt
+service OrderingSystem {
+  // Eine Bestellung aufgeben (Anforderung a, b, c)
+  rpc PlaceOrder (OrderRequest) returns (OrderResponse);
+  
+  // Kundendaten abrufen/aktualisieren (Anforderung b, f)
+  rpc GetCustomerProfile (CustomerRequest) returns (CustomerProfile);
+}
+
+message OrderRequest {
+  string customer_id = 1;
+  repeated string item_ids = 2;
+  string payment_method = 3; 
+  bool is_company_order = 4; // Wichtig für Anforderung c
+}
+
+message OrderResponse {
+  bool success = 1;
+  string message = 2;
+  double total_price_after_discount = 3; // Berechnet inkl. Rabatt (b)
+  string transaction_id = 4; // Für die Konsistenz (f)
+}
+
+message CustomerRequest {
+  string customer_id = 1;
+}
+
+message CustomerProfile {
+  string name = 1;
+  double credit_limit = 2; // Prüfung für Anforderung b
+  int32 loyalty_points = 3; // Treueprämien (b)
+  bool is_corporate = 4; // Firmenkunden-Status (c)
+}

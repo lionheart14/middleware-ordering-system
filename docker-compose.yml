@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Die Datenbank für Anforderung f (Persistenz & Konsistenz)
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: mos_password
+      POSTGRES_DB: ordering_db
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d ordering_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Dein Java-Server (Middleware Core)
+  server:
+    build:
+      context: .
+      dockerfile: server-java/Dockerfile
+    ports:
+      - "50051:50051" # gRPC Port
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/ordering_db
+      - DB_USER=admin
+      - DB_PASSWORD=mos_password
+
+  # Dein Python-Client (Test-Umgebung)
+  client:
+    build:
+      context: .
+      dockerfile: client-python/Dockerfile
+    depends_on:
+      - server
+    # Der Client läuft einmal durch und zeigt die Testergebnisse im Log
