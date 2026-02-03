@@ -1,0 +1,33 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# IDEs (VS Code & IntelliJ)
+.vscode/
+.idea/
+*.swp
+*.iml
+
+# OS spezifisch
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+*.log
+
+# Zertifikate (Sicherheit)
+# In einem echten Projekt würde man diese ignorieren. 
+# Für die Uni kannst du sie drin lassen, damit der Prof sie sieht.
+# !certs/

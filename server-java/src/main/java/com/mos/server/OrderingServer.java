@@ -3,7 +3,9 @@ package com.mos.server;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
-import ordering.*; // Diese Klassen generiert Maven für uns
+import ordering.OrderRequest;
+import ordering.OrderResponse;
+import ordering.OrderingSystemGrpc;
 
 import java.io.IOException;
 

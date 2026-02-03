@@ -3,6 +3,8 @@ import ordering_pb2
 import ordering_pb2_grpc
 
 def run():
+    print("Verbinde mit Middleware-Server...")
+    time.sleep(5)
     # Verbindung zum Server aufbauen (Im Docker-Netzwerk heißt der Host 'server')
     with grpc.insecure_channel('server:50051') as channel:
         stub = ordering_pb2_grpc.OrderingSystemStub(channel)

@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package ordering;
 
+option java_multiple_files = true;
+option java_package = "ordering";
+
 // Der Service, den der Middleware-Server bereitstellt
 service OrderingSystem {
   // Eine Bestellung aufgeben (Anforderung a, b, c)
