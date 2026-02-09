@@ -6,6 +6,14 @@ def run():
     print("Verbinde mit Middleware-Server...")
     # Verbindung zum Server aufbauen (Im Docker-Netzwerk heißt der Host 'server')
     with grpc.insecure_channel('server:50051') as channel:
+        try:
+            print("Warte auf Server-Bereitschaft...")
+            grpc.channel_ready_future(channel).result(timeout=10)
+            print("Server bereit!")
+        except grpc.FutureTimeoutError:
+            print("Fehler: Server konnte nicht rechtzeitig erreicht werden.")
+            return
+        
         stub = ordering_pb2_grpc.OrderingSystemStub(channel)
 
         print("--- Test 1: Normaler Kunde ---")
