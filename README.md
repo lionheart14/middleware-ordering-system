@@ -1,6 +1,6 @@
 # Middleware Ordering System (MOS)
 
-Dieses Repository enthält die Implementierung einer **Elektronischen Handelsplattform**. Das Projekt entstand im Rahmen der **5. Übung** zum Thema Middleware[cite: 8]. Es demonstriert die Integration verschiedener Programmiersprachen und Plattformen in einem verteilten System.
+Dieses Repository enthält die Implementierung einer **Elektronischen Handelsplattform**. Das Projekt entstand im Rahmen der **5. Übung** zum Thema Middleware. Es demonstriert die Integration verschiedener Programmiersprachen und Plattformen in einem verteilten System.
 
 ## 🏗 Architektur (4-Stufen-Modell)
 Die Anwendung ist nach dem im Kurs behandelten Schichtenmodell aufgebaut:
@@ -14,7 +14,7 @@ Die Anwendung ist nach dem im Kurs behandelten Schichtenmodell aufgebaut:
 ## ✅ Implementierte Anforderungen
 Das System erfüllt zentrale Anforderungen aus der Aufgabenstellung:
 
-* **Plattformneutralität (Aufgabe 10):** Kommunikation zwischen Java (Server) und Python (Client) mittels gRPC über verschiedene Container hinweg[cite: 75, 76].
+* **Plattformneutralität (Aufgabe 10):** Kommunikation zwischen Java (Server) und Python (Client) mittels gRPC über verschiedene Container hinweg.
 * **Kundenrabatte (Anforderung b):** Automatische Berechnung von Rabatten (z. B. für VIP-Kunden) während der Auftragsbearbeitung.
 * **Firmenkunden-Validierung (Anforderung c):** Zugriffskontrolle, die bestimmte Bestellvorgänge exklusiv für Firmenkunden reserviert.
 * **Persistenz-Vorbereitung (Anforderung f):** Strukturierte Datenhaltung zur konsistenten Verwaltung von Kundendatensätzen.
